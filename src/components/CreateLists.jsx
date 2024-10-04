@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {Card, CardContent, Typography} from '@mui/material';
 
 function CreateLists({
