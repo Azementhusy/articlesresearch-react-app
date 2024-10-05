@@ -10,12 +10,14 @@ function CreateLists({
     summary,
 }){
     return (
-        <Card variant="outlined" style={{ margin: '10px 0' }}>
+        <Card style={{ marginBottom: '20px' }}>
       <CardContent>
-        <Typography variant="h5">{title}</Typography>
+        <Typography variant="h5" component="div">
+          {title}
+          </Typography>
         <Typography color="textSecondary">DOI: {doi}</Typography>
         <Typography>Year: {publication_year}</Typography>
-        <Typography>Citations: {cited_by_count}</Typography>
+        <Typography>Cited by: {cited_by_count}</Typography>
         <Typography>Open Access: {is_oa}</Typography>
         <Typography>{summary}</Typography>
       </CardContent>

@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import Chatbot from './components/Chatbox';
+import ChatBot from './components/ChatBot';
 
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div>
-      <Chatbot />
+      <ChatBot />
     </div>
   );
 }
