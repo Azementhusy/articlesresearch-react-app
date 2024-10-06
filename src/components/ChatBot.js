@@ -4,7 +4,6 @@ import { Box, Typography } from '@mui/material';
 import MessageList from './MessageList';
 import ChatInput from './ChatInput';
 import TypingIndicator from './TypingIndicator';
-import CreateLists from './CreateLists';
 
 const ChatBot = () => {
   const [messages, setMessages] = useState([]);
@@ -15,7 +14,7 @@ const ChatBot = () => {
 
   const handleSendMessage = async () => {
     if (inputValue.trim()) {
-      setMessages(prev => [...prev, { sender: 'user', text: inputValue }]);
+      setMessages(prev => [...prev, { sender: 'user', type:'text', text: inputValue }]);
       setInputValue('');
   
       try {
@@ -27,24 +26,14 @@ const ChatBot = () => {
         } else {
           const {summary, articles} = response.data;
 
-          const articleCards = articles.map((item, index) => (
-            <CreateLists
-              key={index}
-              title={item.title}
-              doi={item.doi}
-              publication_year={item.publication_year}
-              cited_by_count={item.cited_by_count}
-              is_oa={item.is_oa ? 'Yes' : 'No'}
-              abstract={item.abstract}
-            />
-          ));
-
-          setMessages(prev => [...prev, { sender: 'bot', text: articleCards }]);
-
-          setMessages(prev => [...prev, { sender: 'bot', text: summary }]);
+          setMessages(prev => [
+            ...prev,
+            { sender: 'bot', type: 'articles', data: articles },
+            { sender: 'bot', type: 'text', text: summary }
+          ]);
         }
       } catch (error) {
-          setMessages(prev => [...prev, { sender: 'bot', text: 'A network error occurred. Please try again later.' }]);
+          setMessages(prev => [...prev, { sender: 'bot', type: 'text', text: 'A network error occurred. Please try again later.' }]);
       } finally {
           setIsTyping(false);
       }

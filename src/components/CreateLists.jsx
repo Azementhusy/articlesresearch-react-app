@@ -14,6 +14,7 @@ function CreateLists({
           marginBottom: '20px',
           backgroundColor: is_oa ? '#e0f7fa' : '#fff', 
           boxShadow: '0 6px 12px rgba(0,0,0,0.1)', 
+          maxWidth:'60%',
           //borderLeft: '2px solid', 
           //borderColor: is_oa ? '#4caf50' : '#f44336',
       }}>
@@ -27,7 +28,7 @@ function CreateLists({
           </Box>
 
           <Typography color="textSecondary" style={{ marginTop: '10px' }}>
-            DOI: <a href={doi} target="_blank" rel="noopener noreferrer">{doi}</a>
+            DOI: {doi ? (<a href={doi} target="_blank" rel="noopener noreferrer" style={{ fontStyle: 'italic' }}>{doi}</a>) : ('null')}
           </Typography>
 
           <Box display="flex" justifyContent="space-between" alignItems="center" style={{ marginTop: '10px' }}>
