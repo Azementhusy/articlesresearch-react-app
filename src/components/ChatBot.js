@@ -21,22 +21,30 @@ const ChatBot = () => {
       try {
         setIsTyping(true);
   
-        const response = await axios.post('http://localhost:5000/api/fetch-json', { url: inputValue });
-          
-        const articleCards = response.data.map((item, index) => (
-          <CreateLists
-            key={index}
-            title={item.title}
-            doi={item.doi}
-            publication_year={item.publication_year}
-            cited_by_count={item.cited_by_count}
-            is_oa={item.is_oa ? 'Yes' : 'No'}
-            abstract={item.abstract}
-          />
-        ));
-        setMessages(prev => [...prev, { sender: 'bot', text: articleCards }]);
+        const response = await axios.post('http://localhost:5000/api/fetch-json', { userQuery: inputValue });
+        if (response.data.error) {
+          setMessages(prev => [...prev, { sender: 'bot', text: response.data.error }]);
+        } else {
+          const {summary, articles} = response.data;
+
+          const articleCards = articles.map((item, index) => (
+            <CreateLists
+              key={index}
+              title={item.title}
+              doi={item.doi}
+              publication_year={item.publication_year}
+              cited_by_count={item.cited_by_count}
+              is_oa={item.is_oa ? 'Yes' : 'No'}
+              abstract={item.abstract}
+            />
+          ));
+
+          setMessages(prev => [...prev, { sender: 'bot', text: articleCards }]);
+
+          setMessages(prev => [...prev, { sender: 'bot', text: summary }]);
+        }
       } catch (error) {
-          setMessages(prev => [...prev, { sender: 'bot', text: 'Error fetching data from the provided URL.' }]);
+          setMessages(prev => [...prev, { sender: 'bot', text: 'A network error occurred. Please try again later.' }]);
       } finally {
           setIsTyping(false);
       }
@@ -50,7 +58,7 @@ const ChatBot = () => {
   return (
     <Box className="container">
       <Typography variant="h5" className="header">
-        Chat with AI Assistant
+        Let's find the article together
       </Typography>
         
       <Box className = "message-container">
