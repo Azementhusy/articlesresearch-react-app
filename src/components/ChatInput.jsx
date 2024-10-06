@@ -9,11 +9,11 @@ const ChatInput = ({ inputValue, onChangeInput, onSend }) => {
           alignItems: 'center',
           width: '100%',
           maxWidth: '800px',
-          margin: '16px 0',  // 添加上下间距
-          backgroundColor: 'white',  // 背景色为白色
-          borderRadius: '20px',  // 圆角样式
-          padding: '8px 16px',  // 内边距
-          boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+          margin: '16px 0',
+          backgroundColor: 'white',
+          borderRadius: '20px',
+          padding: '8px 16px',
+          boxShadow: '2px 6px 10px rgba(0, 0, 0, 0.1)',
         }}>
 
         <TextField
@@ -28,10 +28,10 @@ const ChatInput = ({ inputValue, onChangeInput, onSend }) => {
           }}
           placeholder="Type a message..."
           sx={{
-            backgroundColor: 'white',  // 输入框的背景色
-            borderRadius: '15px',  // 输入框的圆角
+            backgroundColor: 'white',
+            borderRadius: '15px',
             '& fieldset': {
-              border: 'none'  // 移除默认边框
+              border: 'none'
             },
           }}
         />
@@ -43,10 +43,10 @@ const ChatInput = ({ inputValue, onChangeInput, onSend }) => {
             sx={{
               marginLeft: 1,
               padding: '8px 16px',
-              borderRadius: '50px',  // 按钮的圆角
-              transition: 'transform 0.3s ease, background-color 0.3s ease',  // 动画效果
+              borderRadius: '50px',
+              transition: 'transform 0.3s ease, background-color 0.3s ease',
               '&:hover': {
-                transform: 'scale(1.1)',  // 悬停时放大效果
+                transform: 'scale(1.1)',
                 backgroundColor: 'secondary.main',
               },
             }}>

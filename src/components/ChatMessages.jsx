@@ -10,14 +10,15 @@ const ChatBubble = ({ sender, message }) => {
             <Paper 
                 style={{ 
                     alignSelf: isUser ? 'flex-end' : 'flex-start', 
-                    backgroundColor: isUser ? '#1976d2' : '#e0e0e0', 
+                    backgroundColor: isUser ? '#1976d2' : '#ffffff', 
                     color: isUser ? '#fff' : '#000', 
                     padding: '10px', 
                     borderRadius: '15px', 
                     marginBottom: '10px',
                     maxWidth: '80%',
-                }}
-            >
+                }}>
+
+
                 <Typography variant="body1">
                     {message}
                 </Typography>

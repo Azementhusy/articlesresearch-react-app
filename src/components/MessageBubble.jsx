@@ -28,12 +28,15 @@ const MessageBubble = ({ sender, text }) => {
       <Paper
         sx={{
           padding: 1,
-          backgroundColor: isUser ? 'primary.main' : 'grey.300',
+          backgroundColor: isUser ? 'primary.main' : 'white',
           color: isUser ? 'white' : 'black',
           borderRadius: '10px',
           maxWidth: '60%',
-          animation: `${fadeInUp} 0.5s ease`
+          animation: `${fadeInUp} 0.5s ease`,
+          border: isUser ? '1px solid #ccc' : 'none',
+          boxShadow: isUser ? undefined : 'none',
         }}
+        elevation={isUser ? 1 : 0}  // 
       >
         <Typography variant="body1">{text}</Typography>
       </Paper>
